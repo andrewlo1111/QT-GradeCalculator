@@ -84,11 +84,14 @@ public:
 private:
     int money;
     int food;
-    int mine_count = 0;
-    int farm_count = 0;
+    int mine_count;
+    int farm_count;
     std::vector<Unit> unit_list;
 
 };
+
+
+
 
 namespace Ui {
 class MainWindow;

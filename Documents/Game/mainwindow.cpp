@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-
+//Units
 void Unit::move()
 {
     if(done == true)
@@ -76,7 +76,7 @@ Knight::Knight()
 }
 
 
-
+//Buildings
 Mine::Mine()
 {
     building_type = "Mine";
@@ -95,7 +95,13 @@ TownCenter::TownCenter()
     durability = 3;
 }
 
+Player::Player():money(100), food(100), mine_count(0),
+    farm_count(0), unit_list(0) {}
 
+
+
+
+//MainWindow
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
