@@ -81,12 +81,17 @@ class Player
 {
 public:
     Player();
+    void create_unit(std::string unit_type); //might need to be a string intsead of unit
+    int get_unit_list_size();
+    std::vector<int>& get_unit_list();
+
+
 private:
     int money;
     int food;
     int mine_count;
     int farm_count;
-    std::vector<Unit> unit_list;
+    std::vector<int> unit_list;
 
 };
 

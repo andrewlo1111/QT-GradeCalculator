@@ -9,7 +9,9 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow display_window;
 
-
+    Player player2;
+    player2.create_unit("Villager");
+    player2.create_unit("Villager");
 
     QLabel *food_disp1 = new QLabel("Food: 100");
     QLabel *money_disp1 = new QLabel("Money: 100");
@@ -25,6 +27,12 @@ int main(int argc, char *argv[])
 
     unit_list1->addItem("hello");
     unit_list1->addItem("bye");
+
+    int size = player2.get_unit_list_size();
+    for(int i=0;i<size;i++)
+    {
+        unit_list2 -> addItem(QString::number(player2.get_unit_list()[i]));
+    }
 
     QVBoxLayout *layout1 = new QVBoxLayout;
     layout1 ->addWidget(food_disp1);

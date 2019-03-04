@@ -95,10 +95,33 @@ TownCenter::TownCenter()
     durability = 3;
 }
 
+
+
+
+//player actions
 Player::Player():money(100), food(100), mine_count(0),
     farm_count(0), unit_list(0) {}
 
+void Player::create_unit(std::string unit_type)
+{
+    //check if valid unit type
+    if(unit_type == "Villager")
+    {
+        unit_list.push_back(1);
+    }
 
+}
+
+int Player::get_unit_list_size()
+{
+    return unit_list.size();
+}
+
+
+std::vector<int>& Player::get_unit_list()
+{
+    return unit_list;
+}
 
 
 //MainWindow
