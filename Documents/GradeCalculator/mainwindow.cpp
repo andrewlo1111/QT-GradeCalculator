@@ -55,10 +55,40 @@ void MainWindow::updateScore()
         QString text("Final Grade: " + QString::number(final_score) + "%");
         ui->final_grade->setText(text);
     }
-
-
-
 }
+
+
+void MainWindow::updateClass(int selected_class)
+{
+    if(selected_class == 1)
+    {
+        QSlider *HW9Slider = new QSlider;
+        QSpinBox *HW9SpinBox = new QSpinBox;
+        QLabel *HW9Label = new QLabel("HW9");
+
+        hw_scores.push_back(0);
+        extra_slider = HW9Slider;
+        extra_spin = HW9SpinBox;
+        extra_label = HW9Label;
+
+        HW9Slider->setMaximum(20);
+        HW9SpinBox->setMaximum(20);
+
+        QObject::connect(HW9Slider, SIGNAL(valueChanged(int)), HW9SpinBox, SLOT(setValue(int)));
+        QObject::connect(HW9SpinBox, SIGNAL(valueChanged(int)), HW9Slider, SLOT(setValue(int)));
+        QObject::connect(HW9Slider, SIGNAL(valueChanged(int)), this, SLOT(updateHW9(int)));
+    }
+
+    if(selected_class == 0 && hw_scores.size() > 8)
+    {
+        hw_scores.pop_back();
+        extra_slider->close();
+        extra_spin->close();
+        extra_label->close();
+    }
+}
+
+
 
 void MainWindow::updateHW1(int new_value)
 {
@@ -108,6 +138,11 @@ void MainWindow::updateHW8(int new_value)
     updateScore();
 }
 
+void MainWindow::updateHW9(int new_value)
+{
+    hw_scores[8] = new_value;
+    updateScore();
+}
 
 void MainWindow::selectSchemaA()
 {
