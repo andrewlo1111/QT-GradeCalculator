@@ -373,14 +373,14 @@
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QRadioButton" name="radioButton_2">
+      <widget class="QRadioButton" name="SchemaA">
        <property name="text">
         <string>Schema A</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QRadioButton" name="radioButton">
+      <widget class="QRadioButton" name="SchemaB">
        <property name="text">
         <string>Schema B</string>
        </property>
@@ -388,7 +388,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QLabel" name="label_14">
+   <widget class="QLabel" name="final_grade">
     <property name="geometry">
      <rect>
       <x>390</x>
