@@ -29,6 +29,9 @@ private slots:
     void updateHW7(int);
     void updateHW8(int);
     void updateHW9(int);
+    void updateMidterm1(int);
+    void updateMidterm2(int);
+    void updateFinal(int);
     void selectSchemaA();
     void selectSchemaB();
     void updateClass(int);

@@ -14,6 +14,11 @@ MainWindow::MainWindow(QWidget *parent) :
         hw_scores.push_back(0);
     }
 
+    QObject::connect(ui->classSelect, SIGNAL(currentIndexChanged(int)), this, SLOT(updateClass(int)));
+
+    QObject::connect(ui->SchemaA, SIGNAL(clicked()), this, SLOT(selectSchemaA()));
+    QObject::connect(ui->SchemaB, SIGNAL(clicked()), this, SLOT(selectSchemaB()));
+
     QObject::connect(ui->HW1Spin, SIGNAL(valueChanged(int)), this, SLOT(updateHW1(int)));
     QObject::connect(ui->HW2Spin, SIGNAL(valueChanged(int)), this, SLOT(updateHW2(int)));
     QObject::connect(ui->HW3Spin, SIGNAL(valueChanged(int)), this, SLOT(updateHW3(int)));
@@ -22,6 +27,10 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->HW6Spin, SIGNAL(valueChanged(int)), this, SLOT(updateHW6(int)));
     QObject::connect(ui->HW7Spin, SIGNAL(valueChanged(int)), this, SLOT(updateHW7(int)));
     QObject::connect(ui->HW8Spin, SIGNAL(valueChanged(int)), this, SLOT(updateHW8(int)));
+
+    QObject::connect(ui->Midterm1Slider, SIGNAL(valueChanged(int)), this, SLOT(updateMidterm1(int)));
+    QObject::connect(ui->Midterm2Slider, SIGNAL(valueChanged(int)), this, SLOT(updateMidterm2(int)));
+    QObject::connect(ui->FinalSlider, SIGNAL(valueChanged(int)), this, SLOT(updateFinal(int)));
 
 }
 
@@ -78,7 +87,7 @@ void MainWindow::updateClass(int selected_class)
 {
     if(selected_class == 1)
     {
-        QSlider *HW9Slider = new QSlider;
+        QSlider *HW9Slider = new QSlider(Qt::Orientation::Horizontal);
         QSpinBox *HW9SpinBox = new QSpinBox;
         QLabel *HW9Label = new QLabel("HW9");
 
@@ -89,6 +98,10 @@ void MainWindow::updateClass(int selected_class)
 
         HW9Slider->setMaximum(20);
         HW9SpinBox->setMaximum(20);
+
+        ui->verticalLayout->addWidget(HW9Slider);
+        ui->verticalLayout_2->addWidget(HW9SpinBox);
+        ui->verticalLayout_3->addWidget(HW9Label);
 
         QObject::connect(HW9Slider, SIGNAL(valueChanged(int)), HW9SpinBox, SLOT(setValue(int)));
         QObject::connect(HW9SpinBox, SIGNAL(valueChanged(int)), HW9Slider, SLOT(setValue(int)));
@@ -157,6 +170,24 @@ void MainWindow::updateHW8(int new_value)
 void MainWindow::updateHW9(int new_value)
 {
     hw_scores[8] = new_value;
+    updateScore();
+}
+
+void MainWindow::updateMidterm1(int new_value)
+{
+    midterm1 = new_value;
+    updateScore();
+}
+
+void MainWindow::updateMidterm2(int new_value)
+{
+    midterm2 = new_value;
+    updateScore();
+}
+
+void MainWindow::updateFinal(int new_value)
+{
+    final = new_value;
     updateScore();
 }
 
