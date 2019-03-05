@@ -8,6 +8,21 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    for(int i=0;i<8;i++)
+    {
+        hw_scores.push_back(0);
+    }
+
+    QObject::connect(ui->HW1Spin, SIGNAL(valueChanged(int)), this, SLOT(updateHW1(int)));
+    QObject::connect(ui->HW2Spin, SIGNAL(valueChanged(int)), this, SLOT(updateHW2(int)));
+    QObject::connect(ui->HW3Spin, SIGNAL(valueChanged(int)), this, SLOT(updateHW3(int)));
+    QObject::connect(ui->HW4Spin, SIGNAL(valueChanged(int)), this, SLOT(updateHW4(int)));
+    QObject::connect(ui->HW5Spin, SIGNAL(valueChanged(int)), this, SLOT(updateHW5(int)));
+    QObject::connect(ui->HW6Spin, SIGNAL(valueChanged(int)), this, SLOT(updateHW6(int)));
+    QObject::connect(ui->HW7Spin, SIGNAL(valueChanged(int)), this, SLOT(updateHW7(int)));
+    QObject::connect(ui->HW8Spin, SIGNAL(valueChanged(int)), this, SLOT(updateHW8(int)));
+
 }
 
 unsigned int MainWindow::get_num_hw()
@@ -18,9 +33,10 @@ unsigned int MainWindow::get_num_hw()
 
 void MainWindow::updateScore()
 {
+
     unsigned int num_of_hw = get_num_hw();
     int lowest_hw_score = hw_scores[0];
-    for(unsigned int i=0;i<num_of_hw;i++)
+    for(unsigned int i=1;i<num_of_hw;i++)
     {
         if(hw_scores[i] < lowest_hw_score)
         {
@@ -35,7 +51,7 @@ void MainWindow::updateScore()
     }
 
     hw_total -= lowest_hw_score;    //dropping lowest score
-    double max_hw_total = 20 * num_of_hw;
+    double max_hw_total = 20 * (num_of_hw - 1);
     double hw_grade = (hw_total / max_hw_total) * 100;
     double final_score;
     if(SchemaA == true)

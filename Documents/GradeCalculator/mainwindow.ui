@@ -104,16 +104,6 @@
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QSlider" name="HW9Slider">
-       <property name="maximum">
-        <number>20</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
     </layout>
    </widget>
    <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -177,13 +167,6 @@
      </item>
      <item>
       <widget class="QSpinBox" name="HW8Spin">
-       <property name="maximum">
-        <number>20</number>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QSpinBox" name="HW9Spin">
        <property name="maximum">
         <number>20</number>
        </property>
@@ -254,13 +237,6 @@
       <widget class="QLabel" name="label_2">
        <property name="text">
         <string>HW8</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>HW9</string>
        </property>
       </widget>
      </item>
@@ -699,38 +675,6 @@
     <hint type="destinationlabel">
      <x>170</x>
      <y>359</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>HW9Slider</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>HW9Spin</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>124</x>
-     <y>394</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>303</x>
-     <y>389</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>HW9Spin</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>HW9Slider</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>307</x>
-     <y>399</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>209</x>
-     <y>401</y>
     </hint>
    </hints>
   </connection>
